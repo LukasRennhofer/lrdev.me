@@ -1,0 +1,101 @@
+---
+import ThemeToggle from './ThemeToggle.jsx';
+import LogoImage from '../assets/MinskyLogo.png';
+---
+
+<header
+  class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border border-gray-300/30 dark:border-gray-700/30 rounded-3xl shadow-md max-w-7xl w-[95%]"
+  role="banner"
+  style="max-width: 1200px;"
+>
+  <div class="flex items-center justify-between px-6 sm:px-8 lg:px-12 h-16">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+      aria-label="Homepage"
+    >
+      <img
+        src={LogoImage.src}
+        alt="LRDev Logo"
+        class="w-8 h-8 rounded-md object-cover"
+        draggable="false"
+      />
+      <span
+        class="font-mono font-semibold text-lg text-gray-900 dark:text-gray-100 select-none"
+        style="font-feature-settings: 'ss01' on, 'ss02' on;"
+      >
+        lrdev.me
+      </span>
+    </a>
+
+    <!-- Nav Links (Desktop) -->
+    <nav
+      class="hidden md:flex space-x-12 font-mono font-semibold text-gray-700 dark:text-gray-300"
+      aria-label="Primary navigation"
+    >
+      {['Home', 'Blog', 'About', 'Contact'].map((page) => (
+        <a
+          href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
+          class="px-2 py-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 text-gray-900 dark:text-gray-100"
+        >
+          {page}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right controls -->
+    <div class="flex items-center space-x-5">
+      <ThemeToggle client:load />
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-600 transition"
+      >
+        <svg
+          class="w-6 h-6 text-gray-900 dark:text-gray-100"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav
+    id="mobile-menu"
+    class="hidden md:hidden mt-4 border-t border-gray-200 dark:border-gray-800 pt-4 space-y-4 font-mono font-semibold text-gray-700 dark:text-gray-300"
+    aria-label="Mobile navigation"
+  >
+    {['Home', 'Blog', 'About', 'Contact'].map((page) => (
+      <a
+        href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
+        class="block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-300 dark:focus:bg-gray-700 transition-colors"
+      >
+        {page}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+      mobileMenuButton.setAttribute('aria-label', isHidden ? 'Open menu' : 'Close menu');
+    });
+  }
+</script>

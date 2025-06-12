@@ -1,0 +1,282 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+<head>
+  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  <style>
+    :root {
+      --accent: #6366f1;
+      --text-color: #111;
+      --gray-light: #666;
+      --gray-dark: #222;
+      --grid-color-light: rgba(0,0,0,0.05);
+      --grid-color-dark: rgba(255,255,255,0.05);
+      --dot-color-light: rgba(99,102,241,0.2);
+      --dot-color-dark: rgba(99,102,241,0.35);
+    }
+
+    html, body {
+      margin: 0; padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      color: var(--text-color);
+      background-color: white;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+      min-height: 100vh;
+    }
+    html.dark, body.dark {
+      --text-color: #ddd;
+      background-color: #111;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(to right, var(--grid-color-light) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color-light) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridShift 30s linear infinite;
+      transition: background-color 0.3s ease;
+    }
+    html.dark body::before {
+      background-image:
+        linear-gradient(to right, var(--grid-color-dark) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color-dark) 1px, transparent 1px);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle 2px, var(--dot-color-light) 100%, transparent 0);
+      background-size: 60px 60px;
+      background-position: 30px 30px;
+      animation: dotsPulse 6s ease-in-out infinite alternate;
+      transition: background-color 0.3s ease;
+    }
+    html.dark body::after {
+      background-image:
+        radial-gradient(circle 2px, var(--dot-color-dark) 100%, transparent 0);
+    }
+
+    @keyframes gridShift {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 60px 60px, 60px 60px; }
+    }
+    @keyframes dotsPulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.6; }
+    }
+
+    main {
+      position: relative;
+      max-width: 960px;
+      margin: 4rem auto 6rem; /* Add bottom margin for widget */
+      padding: 0 1rem;
+      z-index: 1;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem 2rem;
+      align-items: start;
+    }
+    ul li:first-child {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 3rem;
+      margin-top: 5rem; /* extra top margin to push down for navbar */
+    }
+    ul li:first-child img {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      filter: brightness(95%);
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+    ul li:first-child img:hover {
+      filter: brightness(100%);
+    }
+    ul li:first-child .title {
+      font-size: 2.8rem;
+      margin: 1rem 0 0.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    ul li:first-child .title:hover {
+      color: #4f46e5;
+    }
+    ul li:first-child .date {
+      font-size: 1rem;
+      color: var(--gray-light);
+      margin: 0;
+    }
+    ul li {
+      cursor: pointer;
+    }
+    ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      display: block;
+      transition: color 0.3s ease;
+    }
+    ul li a:hover {
+      color: var(--accent);
+    }
+    ul li img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 0.6rem;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    ul li img:hover {
+      transform: scale(1.03);
+    }
+    ul li .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.3rem;
+    }
+    ul li .date {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      margin: 0;
+      letter-spacing: 0.05em;
+    }
+
+    /* Widget styling */
+    .insight-widget {
+      max-width: 600px;
+      margin: 3rem auto 6rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border-radius: 24px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      user-select: none;
+      animation: widgetGlow 4s ease-in-out infinite alternate;
+      transition: box-shadow 0.3s ease;
+      z-index: 2;
+    }
+    .insight-widget::before {
+      content: "💡";
+      font-size: 2rem;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      opacity: 0.15;
+      filter: drop-shadow(0 0 2px #fff);
+      animation: pulseEmoji 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes widgetGlow {
+      0% {
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+      }
+      100% {
+        box-shadow: 0 15px 50px rgba(139, 92, 246, 0.8);
+      }
+    }
+    @keyframes pulseEmoji {
+      0% { opacity: 0.15; transform: scale(1); }
+      100% { opacity: 0.3; transform: scale(1.15); }
+    }
+
+    @media (max-width: 720px) {
+      ul {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      ul li:first-child .title {
+        font-size: 2rem;
+      }
+      main {
+        margin: 6rem auto 6rem;
+        padding: 0 1rem;
+      }
+      .insight-widget {
+        margin: 3rem 1rem 6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <Header />
+  <main>
+    <section>
+      <ul>
+        {posts.length > 0 && (
+          <>
+            {/* Featured post */}
+            <li>
+              <a href={`/blog/${posts[0].id}/`}>
+                {posts[0].data.heroImage && (
+                  <Image width={960} height={480} src={posts[0].data.heroImage} alt={posts[0].data.title} />
+                )}
+                <h4 class="title">{posts[0].data.title}</h4>
+                <p class="date"><FormattedDate date={posts[0].data.pubDate} /></p>
+              </a>
+            </li>
+            {/* Other posts */}
+            {posts.slice(1).map(post => (
+              <li>
+                <a href={`/blog/${post.id}/`}>
+                  {post.data.heroImage && (
+                    <Image width={720} height={360} src={post.data.heroImage} alt={post.data.title} />
+                  )}
+                  <h4 class="title">{post.data.title}</h4>
+                  <p class="date"><FormattedDate date={post.data.pubDate} /></p>
+                </a>
+              </li>
+            ))}
+          </>
+        )}
+      </ul>
+    </section>
+	<br>
+	<div class="rounded-xl p-6 mb-12 bg-gradient-to-r from-indigo-50 to-blue-100 dark:from-indigo-900 dark:to-blue-950 shadow-md">
+        <h2 class="text-xl font-semibold mb-2">✨ Featured Insight</h2>
+        <p class="text-gray-700 dark:text-gray-300">
+          This article covers advanced techniques and curated examples. Dive deep with confidence.
+        </p>
+      </div>
+  </main>
+  <Footer />
+</body>
+</html>
