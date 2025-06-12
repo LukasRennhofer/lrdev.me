@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
+  base: '/lrdev.me/',
   site: 'https://lrdev.me',
   integrations: [
 	react(),
