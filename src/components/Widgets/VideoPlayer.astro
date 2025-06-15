@@ -1,0 +1,41 @@
+---
+const { src, title, poster, webmSrc } = Astro.props;
+---
+
+<figure class="my-8 max-w-4xl mx-auto">
+  <div class="relative w-full" style="padding-top: 56.25%;"> <!-- 16:9 aspect ratio -->
+    <video
+      class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
+      controls
+      preload="metadata"
+      title={title ?? 'Video'}
+      poster={poster}
+      loading="lazy"
+      playsinline
+      controlsList="nodownload"
+    >
+      {webmSrc && <source src={webmSrc} type="video/webm" />}
+      <source src={src} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  {title && (
+    <figcaption class="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center select-none">
+      {title}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  video::-webkit-media-controls {
+    color-scheme: light dark;
+  }
+  video {
+    outline-offset: 2px;
+  }
+  video:focus-visible {
+    outline: 2px solid var(--astro-primary);
+    outline-offset: 2px;
+  }
+</style>

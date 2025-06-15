@@ -5,6 +5,12 @@ import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro';
 import Skills from '../components/Skills.jsx';
 import FeaturedPosts from '../components/FeaturedPosts.jsx';
+import ProjectOverview from '../components/ProjectOverview.jsx';
+
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const featuredPosts = allPosts.filter(post => post.data.tags?.includes('featured'));
 ---
 
 <Layout title="LRDev - Lukas Rennhofer | Graphics Developer & HTL Student">
@@ -12,7 +18,8 @@ import FeaturedPosts from '../components/FeaturedPosts.jsx';
   <main>
 	<Hero client:load />
 	<Skills client:load />
-  <FeaturedPosts client:load />
+  <ProjectOverview client:load />
+  <FeaturedPosts posts={featuredPosts} client:load />
   <Footer />
   </main>
 </Layout>

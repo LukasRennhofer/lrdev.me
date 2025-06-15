@@ -1,10 +1,11 @@
+---
+import LogoImage from '../assets/MinskyLogo.png';
+---
+
 <footer class="bg-gradient-to-t from-gray-900 via-gray-800 to-gray-900 dark:bg-gradient-to-t dark:from-black dark:via-gray-900 dark:to-black text-white border-t border-gray-700/30 rounded-t-3xl shadow-inner">
   <div class="max-w-7xl mx-auto px-8 py-14 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
     {/* Brand */}
     <div class="flex items-center space-x-4">
-      <div class="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
-        <span class="text-white font-mono font-bold text-xl select-none">LR</span>
-      </div>
       <span class="font-mono font-semibold text-2xl tracking-wider text-gray-100 select-none">
         Lukas Rennhofer
       </span>
@@ -12,15 +13,14 @@
 
     {/* Description */}
     <p class="max-w-lg text-center md:text-left text-gray-300 font-mono leading-relaxed">
-      Graphics Developer & Technical Writer crafting beautiful, performant digital experiences.
-      Sharing knowledge about web development, graphics programming, and emerging tech.
+      Graphics Developer & HTL Student experimenting with low level programming and realtime rendering.
     </p>
 
     {/* Social Links */}
     <div class="flex space-x-6">
       {[
         {
-          href: "https://github.com",
+          href: "https://github.com/LukasRennhofer",
           label: "GitHub",
           icon: (
             <svg
@@ -34,21 +34,7 @@
           ),
         },
         {
-          href: "https://linkedin.com",
-          label: "LinkedIn",
-          icon: (
-            <svg
-              class="w-7 h-7 text-white"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
-            </svg>
-          ),
-        },
-        {
-          href: "https://twitter.com",
+          href: "https://x.com/LRDevOfficial",
           label: "Twitter",
           icon: (
             <svg
@@ -85,4 +71,5 @@
       </p>
     </div>
   </div>
+  <br>
 </footer>

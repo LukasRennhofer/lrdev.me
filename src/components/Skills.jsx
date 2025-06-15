@@ -6,57 +6,42 @@ const skills = [
     category: "Graphics & 3D",
     description: "Low-level graphics programming and 3D rendering",
     items: [
-      { name: "WebGL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/webgl/webgl-original.svg" },
-      { name: "Three.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/threejs/threejs-original.svg" },
       { name: "OpenGL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/opengl/opengl-original.svg" },
       { name: "Vulkan", icon: "https://upload.wikimedia.org/wikipedia/commons/3/30/Vulkan.svg" },
-      { name: "DirectX", icon: "https://upload.wikimedia.org/wikipedia/commons/5/51/DirectX_logo.svg" },
-      { name: "GLSL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/opengl/opengl-original.svg" }
+      { name: "DirectX", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Microsoft-DirectX-Logo-wordmark.svg/250px-Microsoft-DirectX-Logo-wordmark.svg.png" },
+      { name: "GLSL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/opengl/opengl-original.svg" },
+      { name: "Slang", icon: "https://avatars.githubusercontent.com/u/29205606?s=200&v=4" },
+      { name: "SDL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/sdl/sdl-original.svg" }
     ],
     gradient: "from-purple-500 via-pink-500 to-red-500",
     bgGradient: "from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20",
     borderColor: "border-purple-200 dark:border-purple-700"
   },
   {
-    category: "Frontend Development",
-    description: "Modern web frameworks and libraries",
+    category: "Languages",
+    description: "Programming languages and building",
     items: [
-      { name: "React", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
-      { name: "TypeScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" },
-      { name: "Next.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" },
-      { name: "Svelte", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/svelte/svelte-original.svg" },
-      { name: "Astro", icon: "https://astro.build/assets/press/astro-icon-light-gradient.svg" },
-      { name: "Tailwind CSS", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-plain.svg" }
-    ],
-    gradient: "from-blue-500 via-cyan-500 to-teal-500",
-    bgGradient: "from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20",
-    borderColor: "border-blue-200 dark:border-blue-700"
-  },
-  {
-    category: "Backend & Systems",
-    description: "Server-side technologies and infrastructure",
-    items: [
-      { name: "Node.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
+      { name: "C", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" },
+      { name: "C++", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
       { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-      { name: "Rust", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-plain.svg" },
-      { name: "Docker", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" },
-      { name: "AWS", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-      { name: "PostgreSQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" }
+      { name: "Rust", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg" },
+      { name: "Lua", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/lua/lua-original.svg" },
+      { name: "CMake", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cmake/cmake-original.svg" },
     ],
     gradient: "from-green-500 via-emerald-500 to-teal-500",
     bgGradient: "from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20",
     borderColor: "border-green-200 dark:border-green-700"
   },
   {
-    category: "Creative Tools",
-    description: "Design and content creation software",
+    category: "Tools",
+    description: "Software development tools and software for my daily use",
     items: [
-      { name: "Blender", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/blender/blender-original.svg" },
-      { name: "Figma", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" },
-      { name: "Photoshop", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" },
-      { name: "Unity", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg" },
-      { name: "Unreal Engine", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/unrealengine/unrealengine-original.svg" },
-      { name: "After Effects", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/aftereffects/aftereffects-original.svg" }
+      { name: "Arch Linux", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/archlinux/archlinux-original.svg" },
+      { name: "Neovim", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/neovim/neovim-original.svg" },
+      { name: "CLion", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/clion/clion-original.svg" },
+      { name: "Git", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" },
+      { name: "GCC", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/gcc/gcc-original.svg" },
+      { name: "Blender", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/blender/blender-original.svg" }
     ],
     gradient: "from-orange-500 via-red-500 to-pink-500",
     bgGradient: "from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20",
@@ -279,7 +264,7 @@ export default function Skills() {
               Whether it's contributing to open source, sharing knowledge, or tackling challenging technical problems, I'm always excited to collaborate with fellow developers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-primary">
+              <a href="https://github.com/LukasRennhofer" className="btn-primary">
                 Get in Touch
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
