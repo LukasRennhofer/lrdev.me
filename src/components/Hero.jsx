@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LogoImage from '../assets/MinskyLogo.png'; // LRDev Logo
+import LogoImage from '../assets/Branding/Logo/LogoMain.png'; // LRDev Logo
 
 export default function Hero() {
   const greetings = ['Hey', 'Hallo', 'Bonjour', 'Servus', 'Hola', 'Ciao', 'Hej'];

@@ -5,8 +5,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'system-ui', 'sans-serif', "DM Sans", 'ui-sans-serif', 'system-ui'],
+        'italic': ['DM Sans', 'system-ui', 'sans-serif', "DM Sans", 'ui-sans-serif', 'system-ui'],
         'mono': ['JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        "grotesk": ['"Space Grotesk"', 'sans-serif'],
+        "playfair": ['"Playfair Display"', 'serif'],
       },
       colors: {
         primary: {

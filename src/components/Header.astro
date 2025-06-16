@@ -1,6 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.jsx';
-import LogoImage from '../assets/MinskyLogo.png';
+import LogoImage from '../assets/Branding/Logo/LogoMain.png';
 ---
 
 <header
@@ -34,7 +34,7 @@ import LogoImage from '../assets/MinskyLogo.png';
       class="hidden md:flex space-x-12 font-mono font-semibold text-gray-700 dark:text-gray-300"
       aria-label="Primary navigation"
     >
-      {['Home', 'Blog', 'About', 'Contact'].map((page) => (
+      {['Home', 'Blog', 'About', 'Showcase'].map((page) => (
         <a
           href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
           class="px-2 py-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-200 text-gray-900 dark:text-gray-100"
@@ -76,7 +76,7 @@ import LogoImage from '../assets/MinskyLogo.png';
     class="hidden md:hidden mt-4 border-t border-gray-200 dark:border-gray-800 pt-4 space-y-4 font-mono font-semibold text-gray-700 dark:text-gray-300"
     aria-label="Mobile navigation"
   >
-    {['Home', 'Blog', 'About', 'Contact'].map((page) => (
+    {['Home', 'Blog', 'About', 'Showcase'].map((page) => (
       <a
         href={page === 'Home' ? '/' : `/${page.toLowerCase()}`}
         class="block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-300 dark:focus:bg-gray-700 transition-colors"

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroUnderConstruction from '../components/HeroUnderConstruction.tsx';
+---
+
+<Layout title="About Me| Lukas Rennhofer">
+  <Header />
+  <main>
+  <HeroUnderConstruction client:load />
+  <Footer />
+  </main>
+</Layout>

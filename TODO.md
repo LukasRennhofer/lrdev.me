@@ -1,3 +1,2 @@
 - New About site with personal infos
 - New site to overwrite contact site
-- deploy final build site
