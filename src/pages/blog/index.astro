@@ -17,7 +17,7 @@ const posts = (await getCollection('blog')).sort(
 <head>
   <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   <style>
-    :root {
+ :root {
       --accent: #6366f1;
       --text-color: #111;
       --gray-light: #666;
@@ -238,38 +238,107 @@ const posts = (await getCollection('blog')).sort(
 </head>
 <body>
   <Header />
-  <main>
-    <section>
-      <ul>
-        {posts.length > 0 && (
-          <>
-            {/* Featured post */}
-            <li>
-              <a href={`/blog/${posts[0].id}/`}>
-                {posts[0].data.heroImage && (
-                  <Image width={960} height={480} src={posts[0].data.heroImage} alt={posts[0].data.title} />
-                )}
-                <h4 class="title">{posts[0].data.title}</h4>
-                <p class="date"><FormattedDate date={posts[0].data.pubDate} /></p>
-              </a>
-            </li>
-            {/* Other posts */}
-            {posts.slice(1).map(post => (
-              <li>
-                <a href={`/blog/${post.id}/`}>
-                  {post.data.heroImage && (
-                    <Image width={720} height={360} src={post.data.heroImage} alt={post.data.title} />
-                  )}
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date"><FormattedDate date={post.data.pubDate} /></p>
-                </a>
-              </li>
-            ))}
-          </>
-        )}
-      </ul>
-    </section>
-  </main>
+<main>
+  <section>
+    <ul>
+      {posts.length > 0 && (
+        <>
+        <li className="hero">
+  <a href={`/blog/${posts[0].id}/`}>
+    {posts[0].data.heroLight && posts[0].data.heroDark && (
+      <>
+        <Image
+          width={960}
+          height={480}
+          src={posts[0].data.heroLight}
+          alt={posts[0].data.title + " (light)"}
+          className="block dark:hidden"
+        />
+        <Image
+          width={960}
+          height={480}
+          src={posts[0].data.heroDark}
+          alt={posts[0].data.title + " (dark)"}
+          className="hidden dark:block"
+        />
+      </>
+    )}
+
+    {/* Fallback if only one image exists */}
+    {posts[0].data.heroLight && !posts[0].data.heroDark && (
+      <Image
+        width={960}
+        height={480}
+        src={posts[0].data.heroLight}
+        alt={posts[0].data.title}
+      />
+    )}
+    {posts[0].data.heroDark && !posts[0].data.heroLight && (
+      <Image
+        width={960}
+        height={480}
+        src={posts[0].data.heroDark}
+        alt={posts[0].data.title}
+      />
+    )}
+
+    <h4 class="text-3xl font-bold text-accent hover:text-indigo-700 transition-colors">{posts[0].data.title}</h4>
+    <p className="date">
+      <FormattedDate date={posts[0].data.pubDate} />
+    </p>
+  </a>
+</li>
+{posts.slice(1).map(post => (
+  <li key={post.id} className="hero">
+    <a href={`/blog/${post.id}/`}>
+      {post.data.heroLight && post.data.heroDark && (
+        <>
+          <Image
+            width={720}
+            height={360}
+            src={post.data.heroLight}
+            alt={post.data.title + " (light)"}
+            className="block dark:hidden"
+          />
+          <Image
+            width={720}
+            height={360}
+            src={post.data.heroDark}
+            alt={post.data.title + " (dark)"}
+            className="hidden dark:block"
+          />
+        </>
+      )}
+      {!post.data.heroDark && post.data.heroLight && (
+        <Image
+          width={720}
+          height={360}
+          src={post.data.heroLight}
+          alt={post.data.title}
+        />
+      )}
+      {post.data.heroDark && !post.data.heroLight && (
+        <Image
+          width={720}
+          height={360}
+          src={post.data.heroDark}
+          alt={post.data.title}
+        />
+      )}
+
+      <h4 className="title">{post.data.title}</h4>
+      <p className="date">
+        <FormattedDate date={post.data.pubDate} />
+      </p>
+    </a>
+  </li>
+))}
+        </>
+      )}
+    </ul>
+  </section>
+</main>
+
   <Footer />
 </body>
 </html>

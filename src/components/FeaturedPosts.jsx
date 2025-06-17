@@ -6,7 +6,8 @@ const PostCard = ({ post, index, featured = false }) => {
   const tags = Array.isArray(post.data.tags) ? post.data.tags : [];
   const readingTime = post.data.readingTime || 'N/A';
 
-  const imageSrc = post.data.heroImage?.src || post.data.heroImage || post.data.image || post.image || '';
+  const heroLight = post.data.heroLight || '';
+  const heroDark = post.data.heroDark || '';
 
   return (
     <motion.article
@@ -19,33 +20,50 @@ const PostCard = ({ post, index, featured = false }) => {
         ${featured ? 'lg:col-span-2' : ''}`}
       style={{ minHeight: featured ? '420px' : '320px' }}
     >
-      {imageSrc && (
-        <div
-          className={`relative overflow-hidden rounded-t-2xl ${featured ? 'aspect-[16/8]' : 'aspect-[16/9]'}`}
-        >
-          <img
-            src={imageSrc}
-            alt={post.data.title || post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300" />
 
-          {featured && (
-            <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-xs font-semibold rounded-full shadow-lg select-none">
-                ⭐ Featured
-              </span>
-            </div>
-          )}
+{(heroLight || heroDark) && (
+  <div
+    className={`relative overflow-hidden rounded-t-2xl ${featured ? 'aspect-[16/8]' : 'aspect-[16/9]'}`}
+  >
+    {/* Light Image */}
+    {heroLight && (
+      <img
+        src={post.data.heroLight.src}
+        alt={(post.data.title || post.title) + " (light)"}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 block dark:hidden"
+        loading="lazy"
+      />
+    )}
 
-          <div className="absolute bottom-4 right-4 transition-opacity duration-300 opacity-100">
-            <span className="px-3 py-1 bg-black/70 backdrop-blur-sm text-white text-xs rounded-full select-none">
-              {readingTime}
-            </span>
-          </div>
-        </div>
-      )}
+    {/* Dark Image */}
+    {heroDark && (
+      <img
+        src={post.data.heroDark.src}
+        alt={(post.data.title || post.title) + " (dark)"}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 hidden dark:block"
+        loading="lazy"
+      />
+    )}
+
+    {/* Gradient overlay and other stuff remains the same */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300" />
+
+    {featured && (
+      <div className="absolute top-4 right-4">
+        <span className="px-3 py-1 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-xs font-semibold rounded-full shadow-lg select-none">
+          ⭐ Featured
+        </span>
+      </div>
+    )}
+
+    <div className="absolute bottom-4 right-4 transition-opacity duration-300 opacity-100">
+      <span className="px-3 py-1 bg-black/70 backdrop-blur-sm text-white text-xs rounded-full select-none">
+        {readingTime}
+      </span>
+    </div>
+  </div>
+)}
+
 
       {/* ✅ Text Content */}
       <div className={`p-5 ${featured ? 'lg:p-7' : ''} flex flex-col justify-between`}>
