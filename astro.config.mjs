@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   base: '/',
@@ -12,6 +13,7 @@ export default defineConfig({
 	  applyBaseStyles: false,
 	}),
 	mdx(),
+	sitemap()
   ],
   markdown: {
 	shikiConfig: {
