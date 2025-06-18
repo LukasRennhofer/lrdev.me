@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
+  <url>
+    <loc>https://lrdev.me/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://lrdev.me/blog/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://lrdev.me/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://lrdev.me/showcase/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <!-- Featured blog post -->
+  <url>
+    <loc>https://lrdev.me/blog/welcome-to-my-new-website-blog/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Additional posts (add more as needed) -->
+  <!--
+  <url>
+    <loc>https://lrdev.me/blog/another-post-slug/</loc>
+    <lastmod>2025-##-##</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.60</priority>
+  </url>
+  -->
+
+</urlset>
